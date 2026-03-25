@@ -29,12 +29,4 @@ public class ResultsPage extends BasePage {
     public boolean hasNoResults() {
         return wait.until(d -> !d.findElements(noResults).isEmpty());
     }
-
-    public boolean hasResultContaining(String text) {
-        return wait.until(d ->
-                d.findElements(titles)
-                        .stream()
-                        .anyMatch(e -> e.getText().toLowerCase().contains(text.toLowerCase()))
-        );
-    }
 }

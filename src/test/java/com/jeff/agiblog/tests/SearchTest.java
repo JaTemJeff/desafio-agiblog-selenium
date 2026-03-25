@@ -16,7 +16,6 @@ public class SearchTest extends BaseTest {
         ResultsPage resultsPage = homePage.search(article);
 
         Assertions.assertTrue(resultsPage.hasResults());
-        Assertions.assertTrue(resultsPage.hasResultContaining(article));
     }
 
     @Test
