@@ -22,7 +22,7 @@ public class ResultsPage extends BasePage {
 
     public boolean hasResults() {
         wait.until(d -> d.getCurrentUrl().contains("?s="));
-        wait.until(d -> d.findElement(pageTitle).isDisplayed());
+        wait.until(d -> !d.findElements(pageTitle).isEmpty());
         return wait.until(d -> !d.findElements(results).isEmpty());
     }
 
