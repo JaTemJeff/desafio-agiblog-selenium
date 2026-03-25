@@ -14,7 +14,6 @@ public class ResultsPage extends BasePage {
     private By titles = By.cssSelector("h2.entry-title a");
     private By pageTitle = By.cssSelector("h1.page-title");
     private By noResults = By.cssSelector(".no-results");
-    private By noResultsText = By.cssSelector("section.no-results p");
 
     public ResultsPage(WebDriver driver) {
         super(driver);
