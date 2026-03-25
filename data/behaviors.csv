@@ -1,0 +1,3 @@
+"Epic","Feature","Story","FAILED","BROKEN","PASSED","SKIPPED","UNKNOWN"
+"","BDD - Busca de artigos no blog","Buscar artigo com assunto válido","0","0","1","0","0"
+"","BDD - Busca de artigos no blog","Buscar artigo com assunto inválido","0","0","1","0","0"
