@@ -1,10 +1,16 @@
 package com.jeff.agiblog.bdd.runner;
 
-import org.junit.platform.suite.api.*;
+import org.junit.platform.suite.api.ConfigurationParameter;
+import org.junit.platform.suite.api.IncludeEngines;
+import org.junit.platform.suite.api.SelectClasspathResource;
+import org.junit.platform.suite.api.Suite;
+
+import static io.cucumber.junit.platform.engine.Constants.*;
 
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")
-@ConfigurationParameter(key = "cucumber.glue", value = "com.jeff.agiblog.bdd")
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, value = "com.jeff.agiblog.bdd")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty, html:target/cucumber-report.html, io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm")
 public class RunCucumberTest {
 }
