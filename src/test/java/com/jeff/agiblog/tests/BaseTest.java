@@ -1,5 +1,7 @@
 package com.jeff.agiblog.tests;
 
+import com.jeff.agiblog.config.ConfigReader;
+import com.jeff.agiblog.driver.DriverContext;
 import com.jeff.agiblog.driver.DriverFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -12,14 +14,16 @@ public class BaseTest {
     @BeforeEach
     void setUp() {
         driver = DriverFactory.createDriver();
+        DriverContext.setDriver(driver);
         driver.manage().window().maximize();
-        driver.get("https://blog.agibank.com.br/");
+        driver.get(ConfigReader.getBaseUrl());
     }
 
     @AfterEach
     void tearDown() {
         if (driver != null) {
             driver.quit();
+            DriverContext.removeDriver();
         }
     }
 }

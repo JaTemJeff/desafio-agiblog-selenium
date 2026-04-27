@@ -4,13 +4,17 @@ import org.openqa.selenium.WebDriver;
 
 public class DriverContext {
 
-    private static WebDriver driver;
+    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
-    public static void setDriver(WebDriver driver) {
-        DriverContext.driver = driver;
+    public static void setDriver(WebDriver d) {
+        driver.set(d);
     }
 
     public static WebDriver getDriver() {
-        return driver;
+        return driver.get();
+    }
+
+    public static void removeDriver() {
+        driver.remove();
     }
 }

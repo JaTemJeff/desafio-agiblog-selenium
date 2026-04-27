@@ -1,5 +1,6 @@
 package com.jeff.agiblog.bdd.hooks;
 
+import com.jeff.agiblog.config.ConfigReader;
 import com.jeff.agiblog.driver.DriverContext;
 import com.jeff.agiblog.driver.DriverFactory;
 import io.cucumber.java.After;
@@ -12,7 +13,7 @@ public class Hooks {
     public void setUp() {
         WebDriver driver = DriverFactory.createDriver();
         driver.manage().window().maximize();
-        driver.get("https://blog.agibank.com.br/");
+        driver.get(ConfigReader.getBaseUrl());
 
         DriverContext.setDriver(driver);
     }
@@ -21,6 +22,7 @@ public class Hooks {
     public void tearDown() {
         if (DriverContext.getDriver() != null) {
             DriverContext.getDriver().quit();
+            DriverContext.removeDriver();
         }
     }
 }

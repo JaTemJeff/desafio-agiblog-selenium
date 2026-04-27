@@ -1,5 +1,6 @@
 package com.jeff.agiblog.pages;
 
+import com.jeff.agiblog.config.ConfigReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,13 +12,12 @@ public class ResultsPage extends BasePage {
     private WebDriverWait wait;
 
     private By results = By.cssSelector("article.post");
-    private By titles = By.cssSelector("h2.entry-title a");
     private By pageTitle = By.cssSelector("h1.page-title");
     private By noResults = By.cssSelector(".no-results");
 
     public ResultsPage(WebDriver driver) {
         super(driver);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(ConfigReader.getTimeout()));
     }
 
     public boolean hasResults() {

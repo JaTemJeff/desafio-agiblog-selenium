@@ -1,6 +1,10 @@
 package com.jeff.agiblog.pages;
 
+import com.jeff.agiblog.config.ConfigReader;
 import org.openqa.selenium.WebDriver;
+
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class HomePage extends BasePage {
 
@@ -9,8 +13,9 @@ public class HomePage extends BasePage {
     }
 
     public ResultsPage search(String article) {
-        String baseUrl = driver.getCurrentUrl() + "?s=" + article;
-        driver.get(baseUrl);
+        String encoded = URLEncoder.encode(article, StandardCharsets.UTF_8);
+        String searchUrl = ConfigReader.getBaseUrl() + "?s=" + encoded;
+        driver.get(searchUrl);
         return new ResultsPage(driver);
     }
 }
